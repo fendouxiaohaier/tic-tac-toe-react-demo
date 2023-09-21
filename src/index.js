@@ -24,23 +24,17 @@ class Board extends React.Component {
   }
 
   render() {
+    // 三行
+    const boardRows = [0, 1, 2];
     return (
       <div>
-        <div className="board-row">
-          {this.renderSquare(0, [1, 1])}
-          {this.renderSquare(1, [2, 1])}
-          {this.renderSquare(2, [3, 1])}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(3, [1, 2])}
-          {this.renderSquare(4, [2, 2])}
-          {this.renderSquare(5, [3, 2])}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(6, [1, 3])}
-          {this.renderSquare(7, [2, 3])}
-          {this.renderSquare(8, [3, 3])}
-        </div>
+        {boardRows.map((item, row) => (
+          <div className="board-row" key={item}>
+            {boardRows.map((item_, col) =>
+              this.renderSquare(row * 3 + col, [col, row])
+            )}
+          </div>
+        ))}
       </div>
     );
   }
@@ -102,7 +96,11 @@ class Game extends React.Component {
     const moves = history.map((step, move) => {
       // 在描述后面展示坐标（列号，行号）
       const desc = move
-        ? "Go to move #" + move + "坐标：(" + step.coordinate.toString() + ")"
+        ? "Go to move #" +
+          move +
+          "  坐标(列,横)：(" +
+          step.coordinate.toString() +
+          ")"
         : "Go to game start";
       return (
         <li key={move}>
