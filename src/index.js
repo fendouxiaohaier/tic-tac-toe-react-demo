@@ -7,24 +7,41 @@ import "./index.css";
 
 function Square(props) {
   return (
-    <button className="square" onClick={props.onClick}>
+    <button
+      style={{ background: props.isLightBtn ? "red" : "white" }}
+      className="square"
+      onClick={props.onClick}
+    >
       {props.value}
     </button>
   );
 }
 
 class Board extends React.Component {
-  renderSquare(i, coordinate) {
+  renderSquare(i, coordinate, isLightBtn) {
     return (
       <Square
         value={this.props.squares[i]}
         onClick={() => this.props.onClick(i, coordinate)}
         key={i}
+        isLightBtn={isLightBtn}
       />
     );
   }
 
+  isLightBtn = (winner, index) => {
+    if (!winner) {
+      return false;
+    }
+
+    if (winner?.coordinate?.includes(index)) {
+      return true;
+    }
+  };
+
   render() {
+    const winner = calculateWinner(this.props.squares);
+
     // 三行
     const boardRows = [0, 1, 2];
     return (
@@ -32,7 +49,11 @@ class Board extends React.Component {
         {boardRows.map((item, row) => (
           <div className="board-row" key={item}>
             {boardRows.map((item_, col) =>
-              this.renderSquare(row * 3 + col, [col, row])
+              this.renderSquare(
+                row * 3 + col,
+                [col, row],
+                this.isLightBtn(winner, row * 3 + col)
+              )
             )}
           </div>
         ))}
@@ -119,11 +140,11 @@ class Game extends React.Component {
       );
     });
 
-    // 展示胜者是谁
+    // 展示胜者是谁以及坐标位置
     const winner = calculateWinner(current.squares);
     let status;
     if (winner) {
-      status = "Winner: " + winner;
+      status = "Winner: " + winner.winner;
     } else {
       status = "Next player: " + (this.state.xIsNext ? "X" : "O");
     }
@@ -142,7 +163,7 @@ class Game extends React.Component {
           >
             {this.state.isShowHistoryAsc ? "降序" : "升序"}
           </button>
-          <ol>{this.state.isShowHistoryAsc ? moves: moves.reverse()}</ol>
+          <ol>{this.state.isShowHistoryAsc ? moves : moves.reverse()}</ol>
         </div>
       </div>
     );
