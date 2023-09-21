@@ -102,11 +102,18 @@ class Game extends React.Component {
     const moves = history.map((step, move) => {
       // 在描述后面展示坐标（列号，行号）
       const desc = move
-        ? "Go to move #" + move + "(" + step.coordinate.toString() + ")"
+        ? "Go to move #" + move + "坐标：(" + step.coordinate.toString() + ")"
         : "Go to game start";
       return (
         <li key={move}>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
+          <button
+            style={{
+              fontWeight: move === this.state.stepNumber ? "bold" : "normal",
+            }}
+            onClick={() => this.jumpTo(move)}
+          >
+            {desc}
+          </button>
         </li>
       );
     });
