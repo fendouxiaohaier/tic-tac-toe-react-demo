@@ -19,6 +19,7 @@ class Board extends React.Component {
       <Square
         value={this.props.squares[i]}
         onClick={() => this.props.onClick(i, coordinate)}
+        key={i}
       />
     );
   }
@@ -53,6 +54,8 @@ class Game extends React.Component {
         },
       ],
       xIsNext: true,
+      /** 是否升序展示历史记录，默认为true */
+      isShowHistoryAsc: true,
     };
   }
 
@@ -132,7 +135,14 @@ class Game extends React.Component {
         </div>
         <div className="game-info">
           <div>{status}</div>
-          <ol>{moves}</ol>
+          <button
+            onClick={() =>
+              this.setState({ isShowHistoryAsc: !this.state.isShowHistoryAsc })
+            }
+          >
+            {this.state.isShowHistoryAsc ? "降序" : "升序"}
+          </button>
+          <ol>{this.state.isShowHistoryAsc ? moves: moves.reverse()}</ol>
         </div>
       </div>
     );
