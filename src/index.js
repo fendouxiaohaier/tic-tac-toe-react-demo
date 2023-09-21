@@ -14,11 +14,11 @@ function Square(props) {
 }
 
 class Board extends React.Component {
-  renderSquare(i) {
+  renderSquare(i, coordinate) {
     return (
       <Square
         value={this.props.squares[i]}
-        onClick={() => this.props.onClick(i)}
+        onClick={() => this.props.onClick(i, coordinate)}
       />
     );
   }
@@ -27,19 +27,19 @@ class Board extends React.Component {
     return (
       <div>
         <div className="board-row">
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
+          {this.renderSquare(0, [1, 1])}
+          {this.renderSquare(1, [2, 1])}
+          {this.renderSquare(2, [3, 1])}
         </div>
         <div className="board-row">
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-          {this.renderSquare(5)}
+          {this.renderSquare(3, [1, 2])}
+          {this.renderSquare(4, [2, 2])}
+          {this.renderSquare(5, [3, 2])}
         </div>
         <div className="board-row">
-          {this.renderSquare(6)}
-          {this.renderSquare(7)}
-          {this.renderSquare(8)}
+          {this.renderSquare(6, [1, 3])}
+          {this.renderSquare(7, [2, 3])}
+          {this.renderSquare(8, [3, 3])}
         </div>
       </div>
     );
@@ -54,13 +54,15 @@ class Game extends React.Component {
       history: [
         {
           squares: Array(9).fill(null),
+          /** 历史坐标 */
+          coordinate: [],
         },
       ],
       xIsNext: true,
     };
   }
 
-  handleClick = (i) => {
+  handleClick = (i, coordinate) => {
     // 丢弃未来的数据，只保留时间旅行回到的某个时刻
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
     const current = history[history.length - 1];
@@ -76,6 +78,7 @@ class Game extends React.Component {
       history: history.concat([
         {
           squares: squares,
+          coordinate,
         },
       ]),
       stepNumber: history.length,
@@ -97,7 +100,10 @@ class Game extends React.Component {
 
     // 渲染跳转步骤按钮UI
     const moves = history.map((step, move) => {
-      const desc = move ? "Go to move #" + move : "Go to game start";
+      // 在描述后面展示坐标（列号，行号）
+      const desc = move
+        ? "Go to move #" + move + "(" + step.coordinate.toString() + ")"
+        : "Go to game start";
       return (
         <li key={move}>
           <button onClick={() => this.jumpTo(move)}>{desc}</button>
