@@ -28,15 +28,9 @@
 
     "typeRoots": ["node_modules/@types", "typings"],
     "paths": {
-      "components/*": ["./src/components/*"],
+      "components/*": ["./src/components/*"]
     }
   },
 
-  "include": ["src/**/*", "typings/**/*", "typings/components/index.d.ts"],
-  "files": [
-    "typings/components/Board/index.d.ts",
-    "typings/components/Square/index.d.ts",
-    "typings/components/Game/index.d.ts",
-    "typings/components/index.d.ts"
-  ]
+  "include": ["src/**/*", "typings/**/*"]
 }

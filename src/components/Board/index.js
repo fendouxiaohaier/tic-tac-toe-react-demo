@@ -22,7 +22,7 @@ const Board = (props) => {
       return (
         <Square
           value={squares[i]}
-          key={i}
+          key={i} 
           isLightBtn={isLightBtn}
           index={i}
           coordinate={coordinate}
