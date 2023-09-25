@@ -26,7 +26,10 @@
 
     "jsx": "react",
 
-    "typeRoots": ["node_modules/@types", "typings"]
+    "typeRoots": ["node_modules/@types", "typings"],
+    "paths": {
+      "components/*": ["./src/components/*"],
+    }
   },
 
   "include": ["src/**/*", "typings/**/*", "typings/components/index.d.ts"],
