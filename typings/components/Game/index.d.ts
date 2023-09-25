@@ -5,4 +5,4 @@ interface GameProps {
   children: ReactNode;
 }
 
-export default function Game(props: GameProps): JSX.Element;
+export function Game(props: GameProps): JSX.Element;

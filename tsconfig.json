@@ -1,0 +1,43 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+
+    "lib": ["dom", "dom.iterable", "esnext"],
+
+    "allowJs": true,
+
+    "skipLibCheck": true,
+
+    "esModuleInterop": true,
+
+    "allowSyntheticDefaultImports": true,
+
+    "forceConsistentCasingInFileNames": true,
+
+    "module": "esnext",
+
+    "moduleResolution": "node",
+
+    "resolveJsonModule": true,
+
+    "isolatedModules": true,
+
+    "noEmit": true,
+
+    "jsx": "react",
+
+    "typeRoots": [
+      "node_modules/@types",
+      "typings/**/*",
+      "typings/components/index.d.ts"
+    ]
+  },
+
+  "include": ["src/**/*", "typings/**/*", "typings/components/index.d.ts"],
+  "files": [
+    "typings/components/Board/index.d.ts",
+    "typings/components/Square/index.d.ts",
+    "typings/components/Game/index.d.ts",
+    "typings/components/index.d.ts"
+  ]
+}

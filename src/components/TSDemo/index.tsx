@@ -1,18 +1,18 @@
-import React, { FC, memo } from "react";
+import React, { FC, memo, useEffect } from "react";
 
-import Square from "../Square";
+// import logo from '../../../public/logo192.png';
+
+import { Square } from "../../components/index.js";
 
 const TSDemo: FC<{ demoValue: string }> = ({ demoValue }) => {
+
+  useEffect(() => {
+  }, []);
+
   return (
     <div style={{ margin: "100px" }}>
       <button>{demoValue}</button>
-      <Square
-        children={<span>我是Square组件的子组件</span>}
-        coordinate={[1, 2]}
-        index={1}
-        isLightBtn
-        value="X"
-      />
+      <Square />
     </div>
   );
 };

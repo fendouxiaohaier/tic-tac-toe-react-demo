@@ -1,4 +1,4 @@
-import { ReactNode, JSX } from "react";
+import { ReactNode, FC } from "react";
 
 interface SquareProps {
   children: ReactNode;
@@ -12,4 +12,4 @@ interface SquareProps {
   coordinate: [number, number];
 }
 
-export default function Square(props: SquareProps): JSX.Element;
+export const Square: FC<SquareProps>;

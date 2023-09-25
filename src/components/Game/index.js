@@ -1,7 +1,7 @@
 import { memo, useCallback, useMemo, useState } from "react";
 import { unstable_batchedUpdates } from "react-dom";
 
-import { Board } from "../../components";
+import { Board } from "../index";
 import TSDemo from "../TSDemo/index.tsx";
 
 import { calculateWinner } from "../../util";
