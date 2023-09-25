@@ -5,6 +5,8 @@ import Board from "../Board";
 
 import { calculateWinner } from "../../util";
 
+import GameContext from "../../context/GameContext";
+
 import "./index.css";
 
 const Game = () => {
@@ -122,18 +124,20 @@ const Game = () => {
   }, [history, jumpTo, stepNumber]);
 
   return (
-    <div className="game">
-      <div className="game-board">
-        <Board squares={history[stepNumber].squares} onClick={handleClick} />
+    <GameContext.Provider value={{ onClick: handleClick }}>
+      <div className="game">
+        <div className="game-board">
+          <Board squares={history[stepNumber].squares} />
+        </div>
+        <div className="game-info">
+          <div>{status}</div>
+          <button onClick={() => setIsShowHistoryAsc(!isShowHistoryAsc)}>
+            {isShowHistoryAsc ? "降序" : "升序"}
+          </button>
+          <ol>{isShowHistoryAsc ? moves : moves.reverse()}</ol>
+        </div>
       </div>
-      <div className="game-info">
-        <div>{status}</div>
-        <button onClick={() => setIsShowHistoryAsc(!isShowHistoryAsc)}>
-          {isShowHistoryAsc ? "降序" : "升序"}
-        </button>
-        <ol>{isShowHistoryAsc ? moves : moves.reverse()}</ol>
-      </div>
-    </div>
+    </GameContext.Provider>
   );
 };
 

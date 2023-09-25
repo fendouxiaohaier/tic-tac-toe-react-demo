@@ -1,4 +1,6 @@
-import { memo } from "react";
+import { memo, useContext } from "react";
+
+import GameContext from "../../context/GameContext";
 
 import "./index.css";
 
@@ -8,13 +10,17 @@ import "./index.css";
  * @returns
  */
 const Square = (props) => {
+  const gameContextValue = useContext(GameContext);
+
+  const { isLightBtn, value, index, coordinate } = props;
+
   return (
     <button
-      style={{ background: props.isLightBtn ? "red" : "white" }}
+      style={{ background: isLightBtn ? "red" : "white" }}
       className="square"
-      onClick={props.onClick}
+      onClick={() => gameContextValue.onClick(index, coordinate)}
     >
-      {props.value}
+      {value}
     </button>
   );
 };

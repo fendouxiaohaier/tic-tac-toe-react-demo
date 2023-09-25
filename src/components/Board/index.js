@@ -5,10 +5,10 @@ import Square from "../Square";
 import { calculateWinner } from "../../util";
 import { BoardRows } from "../../constants";
 
-import './index.css';
+import "./index.css";
 
 const Board = (props) => {
-  const { onClick, squares } = props;
+  const { squares } = props;
 
   /**
    * @description 根据参数 渲染一个一个的格子
@@ -22,13 +22,14 @@ const Board = (props) => {
       return (
         <Square
           value={squares[i]}
-          onClick={() => onClick(i, coordinate)}
           key={i}
           isLightBtn={isLightBtn}
+          index={i}
+          coordinate={coordinate}
         />
       );
     },
-    [onClick, squares]
+    [squares]
   );
 
   /**
