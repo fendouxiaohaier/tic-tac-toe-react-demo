@@ -1,11 +1,11 @@
 import { memo } from "react";
 
-import './index.css';
+import "./index.css";
 
 /**
  * @description 一个一个的方格组件
- * @param {*} props 
- * @returns 
+ * @param {*} props
+ * @returns
  */
 const Square = (props) => {
   return (
