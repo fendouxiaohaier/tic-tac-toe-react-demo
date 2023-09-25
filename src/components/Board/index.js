@@ -1,6 +1,6 @@
 import { useCallback, memo, useMemo } from "react";
 
-import Square from "../Square";
+import { Square } from "../../components";
 
 import { calculateWinner } from "../../util";
 import { BoardRows } from "../../constants";

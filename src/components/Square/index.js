@@ -1,6 +1,6 @@
 import { memo, useContext } from "react";
 
-import GameContext from "../../context/GameContext";
+import { GameContext } from "../../context";
 
 import "./index.css";
 
