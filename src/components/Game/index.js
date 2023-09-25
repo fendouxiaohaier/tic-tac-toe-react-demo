@@ -2,6 +2,7 @@ import { memo, useCallback, useMemo, useState } from "react";
 import { unstable_batchedUpdates } from "react-dom";
 
 import Board from "../Board";
+import TSDemo from "../TSDemo/index.tsx";
 
 import { calculateWinner } from "../../util";
 
@@ -137,6 +138,8 @@ const Game = () => {
           <ol>{isShowHistoryAsc ? moves : moves.reverse()}</ol>
         </div>
       </div>
+
+      <TSDemo demoValue="tsDemo按钮" />
     </GameContext.Provider>
   );
 };
