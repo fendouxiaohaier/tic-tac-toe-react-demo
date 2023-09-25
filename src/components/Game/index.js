@@ -2,6 +2,7 @@ import { memo, useCallback, useMemo, useState } from "react";
 import { unstable_batchedUpdates } from "react-dom";
 
 import Board from "../Board";
+import Demo from "../Demo/index.tsx";
 
 import { calculateWinner } from "../../util";
 
@@ -126,6 +127,7 @@ const Game = () => {
   return (
     <GameContext.Provider value={{ onClick: handleClick }}>
       <div className="game">
+        <Demo value="123" />
         <div className="game-board">
           <Board squares={history[stepNumber].squares} />
         </div>
