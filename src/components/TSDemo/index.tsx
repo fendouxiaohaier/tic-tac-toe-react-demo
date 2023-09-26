@@ -2,7 +2,8 @@ import React, { FC, memo, useEffect } from "react";
 
 // import logo from '../../../public/logo192.png';
 
-import { Square } from "components";
+// import { Square } from "../../components/index.js";
+import { Square } from "../../components";
 
 const TSDemo: FC<{ demoValue: string }> = ({ demoValue }) => {
   useEffect(() => {}, []);
@@ -14,8 +15,6 @@ const TSDemo: FC<{ demoValue: string }> = ({ demoValue }) => {
         children={<span>123</span>}
         coordinate={[1, 2]}
         index={1}
-        isLightBtn={true}
-        value="X"
       />
     </div>
   );
