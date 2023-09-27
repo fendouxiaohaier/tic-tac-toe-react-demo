@@ -26,11 +26,13 @@
 
     "jsx": "react",
 
-    "typeRoots": ["node_modules/@types", "typings"],
-    "paths": {
-      "aaa/components/*": ["./src/components/*"],
-    }
+    "baseUrl": "./",
+
+    "typeRoots": [
+      "node_modules/@types",
+      "types"
+    ],
   },
 
-  "include": ["src/**/*", "typings/**/*"]
+  "include": ["src/**/*"]
 }

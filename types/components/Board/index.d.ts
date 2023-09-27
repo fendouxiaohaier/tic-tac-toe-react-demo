@@ -8,4 +8,6 @@ interface BoardProps {
   squares: TSquares[];
 }
 
-export function Board(props: BoardProps): JSX.Element;
+declare function Board(props: BoardProps): JSX.Element;
+
+export default Board;

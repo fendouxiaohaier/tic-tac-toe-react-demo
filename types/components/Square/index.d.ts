@@ -12,4 +12,6 @@ interface SquareProps {
   coordinate: [number, number];
 }
 
-export const Square: FC<SquareProps>;
+declare const Square: FC<SquareProps>;
+
+export default Square;

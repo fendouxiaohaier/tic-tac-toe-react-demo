@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import { Game } from "aaa/components";
+import { Game } from "./components";
 
 import "./index.css";
 
