@@ -28,7 +28,7 @@
 
     "typeRoots": ["node_modules/@types", "typings"],
     "paths": {
-      "components/*": ["./src/components/*"]
+      "aaa/components/*": ["./src/components/*"],
     }
   },
 
