@@ -26,13 +26,9 @@
 
     "jsx": "react",
 
-    "baseUrl": "./",
-
-    "typeRoots": [
-      "node_modules/@types",
-      "types"
-    ],
+    "typeRoots": ["node_modules/@types", "./types"],
+    "rootDirs": ["src", "types"]
   },
 
-  "include": ["src/**/*"]
+  "include": ["src/**/*", "types/*"]
 }
