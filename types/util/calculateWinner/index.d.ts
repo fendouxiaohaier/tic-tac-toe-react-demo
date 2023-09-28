@@ -6,4 +6,4 @@ type TSquares = string | null;
  */
 type TResult = { winner: string; coordinate: number[] } | null;
 
-declare function calculateWinner(squares: TSquares[]): TResult;
+export function calculateWinner(squares: TSquares[]): TResult;
